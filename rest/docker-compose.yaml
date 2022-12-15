@@ -1,0 +1,14 @@
+version: '3'
+
+services: 
+
+  laminas:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: silviotmalmeida/laminas:latest
+    container_name: laminas
+    tty: true
+    command: bash -c "chmod 777 api-tools-skeleton && cd api-tools-skeleton && php -S 0.0.0.0:8080 -t public public/index.php"
+    ports: 
+      - "8888:8080"
