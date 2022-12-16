@@ -1,0 +1,58 @@
+// arquivo de descrição dos serviços da entidade category
+
+syntax = "proto3";
+package pb;
+option go_package = "internal/pb";
+
+
+// definindo os campos a serem enviados nas mensagens
+
+//// mensagem vazia,
+//// utilizada como request para o serviço de listagem
+message blank{}
+
+//// mensagem com todos os campos da entidade,
+//// utilizada como response para o serviço de criação de um registro
+message Category {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+//// mensagem com os campos utilizados na criação da entidade,
+//// utilizada como request para o serviço de criação de um registro
+message CreateCategoryRequest {
+    string name = 1;
+    string description = 2;
+}
+
+//// mensagem com lista de entidades,
+//// utilizada como response para os serviços de criação e listagem de registros
+message CategoryList {
+    repeated Category categories = 1;
+}
+
+//// mensagem com o id da entidade,
+//// utilizada como request para o serviço de listagem de um registro
+message CategoryGetRequest {
+    string id = 1;
+}
+
+// definindo os serviços a serem implementados
+service CategoryService {
+
+    // serviço de criação simples
+    rpc CreateCategory(CreateCategoryRequest) returns (Category) {}
+
+    // serviço de criação ...
+    rpc CreateCategoryStream(stream CreateCategoryRequest) returns (CategoryList) {}
+    
+    // serviço de criação ...
+    rpc CreateCategoryStreamBidirectional(stream CreateCategoryRequest) returns (stream Category) {}
+    
+    // serviço de listagem
+    rpc ListCategories(blank) returns (CategoryList) {}
+
+    // serviço de listagem de um registro
+    rpc GetCategory(CategoryGetRequest) returns (Category) {}
+}

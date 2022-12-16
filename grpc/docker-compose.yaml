@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+
+  example_grpc:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: silviotmalmeida/example_grpc:latest
+    container_name: example_grpc
+    volumes: 
+      - ./app:/usr/src/app
+    tty: true

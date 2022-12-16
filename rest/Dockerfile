@@ -2,7 +2,7 @@
 FROM php:7.4-cli
 
 # comandos a serem executados
-## instalando os pré-requisitos
+## instalando as dependências
 RUN apt-get update && \
     apt-get install libzip-dev libicu-dev sqlite3 -y
 
