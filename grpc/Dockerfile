@@ -12,6 +12,6 @@ RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28 && \
 # definindo a pasta de trabalho a ser criada e focada no acesso
 WORKDIR /usr/src/app
 
-RUN export GOPATH=$HOME/go
+ENV GOPATH=/root/go
 
-RUN export PATH=$PATH:$GOPATH/bin
+ENV PATH=$PATH:$GOPATH/bin

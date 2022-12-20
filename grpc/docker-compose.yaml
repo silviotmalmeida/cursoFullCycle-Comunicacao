@@ -11,3 +11,5 @@ services:
     volumes: 
       - ./app:/usr/src/app
     tty: true
+    ports: 
+      - "50051:50051"
