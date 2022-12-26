@@ -44,10 +44,10 @@ service CategoryService {
     // serviço de criação simples
     rpc CreateCategory(CreateCategoryRequest) returns (Category) {}
 
-    // serviço de criação ...
+    // serviço de criação onde são enviadas várias requisições (stream) e retornada uma resposta
     rpc CreateCategoryStream(stream CreateCategoryRequest) returns (CategoryList) {}
     
-    // serviço de criação ...
+    // serviço de criação onde são enviadas várias requisições (stream) e retornada várias respostas
     rpc CreateCategoryStreamBidirectional(stream CreateCategoryRequest) returns (stream Category) {}
     
     // serviço de listagem

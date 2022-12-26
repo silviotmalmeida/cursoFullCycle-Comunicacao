@@ -24,9 +24,9 @@ const _ = grpc.SupportPackageIsVersion7
 type CategoryServiceClient interface {
 	// serviço de criação simples
 	CreateCategory(ctx context.Context, in *CreateCategoryRequest, opts ...grpc.CallOption) (*Category, error)
-	// serviço de criação ...
+	// serviço de criação onde são enviadas várias requisições (stream) e retornada uma resposta
 	CreateCategoryStream(ctx context.Context, opts ...grpc.CallOption) (CategoryService_CreateCategoryStreamClient, error)
-	// serviço de criação ...
+	// serviço de criação onde são enviadas várias requisições (stream) e retornada várias respostas
 	CreateCategoryStreamBidirectional(ctx context.Context, opts ...grpc.CallOption) (CategoryService_CreateCategoryStreamBidirectionalClient, error)
 	// serviço de listagem
 	ListCategories(ctx context.Context, in *Blank, opts ...grpc.CallOption) (*CategoryList, error)
@@ -140,9 +140,9 @@ func (c *categoryServiceClient) GetCategory(ctx context.Context, in *CategoryGet
 type CategoryServiceServer interface {
 	// serviço de criação simples
 	CreateCategory(context.Context, *CreateCategoryRequest) (*Category, error)
-	// serviço de criação ...
+	// serviço de criação onde são enviadas várias requisições (stream) e retornada uma resposta
 	CreateCategoryStream(CategoryService_CreateCategoryStreamServer) error
-	// serviço de criação ...
+	// serviço de criação onde são enviadas várias requisições (stream) e retornada várias respostas
 	CreateCategoryStreamBidirectional(CategoryService_CreateCategoryStreamBidirectionalServer) error
 	// serviço de listagem
 	ListCategories(context.Context, *Blank) (*CategoryList, error)
