@@ -1,0 +1,15 @@
+version: '3'
+
+services: 
+
+  example_graphql:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: silviotmalmeida/example_graphql:latest
+    container_name: example_graphql
+    volumes: 
+      - ./app:/usr/src/app
+    tty: true
+    ports: 
+      - "8080:8080"

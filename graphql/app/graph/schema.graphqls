@@ -1,0 +1,43 @@
+# descrevendo a estrutura da aplicação GraphQL
+# a opção generate do gqlgen cria os arquivos da aplicação a partir desta descrição
+
+# entidade Categoria (relacionamento 1xn com Curso)
+type Category {
+  id: ID!
+  name: String!
+  description: String
+  courses: [Course!]!
+}
+
+# entidade Curso (relacionamento nx1 com Categoria)
+type Course {
+  id: ID!
+  name: String!
+  description: String
+  category: Category!
+}
+
+# input com os campos necessários para criação de uma nova Categoria
+input NewCategory {
+  name: String!
+  description: String
+}
+
+# input com os campos necessários para criação de um novo Curso
+input NewCourse {
+  name: String!
+  description: String
+  categoryId: ID!
+}
+
+# tipos de métodos buscas de dados a serem implementadas
+type Query {
+  categories: [Category!]!
+  courses: [Course!]!
+}
+
+# tipos de métodos de alterações de dados a serem implementadas
+type Mutation {
+  createCategory(input: NewCategory!): Category!
+  createCourse(input: NewCourse!): Course!
+}
