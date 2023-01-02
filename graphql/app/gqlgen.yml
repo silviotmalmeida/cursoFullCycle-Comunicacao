@@ -50,6 +50,14 @@ autobind:
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
+  # considerando a model de categoria em arquivo separado
+  Category:
+    model:
+      - github.com/silviotmalmeida/cursoFullCycle-Comunicacao/graphql/app/graph/model.Category
+  # considerando a model de curso em arquivo separado
+  Course:
+    model:
+      - github.com/silviotmalmeida/cursoFullCycle-Comunicacao/graphql/app/graph/model.Course
   ID:
     model:
       - github.com/99designs/gqlgen/graphql.ID
