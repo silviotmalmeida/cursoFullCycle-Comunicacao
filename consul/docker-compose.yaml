@@ -34,6 +34,32 @@ services:
             network:
                 ipv4_address: 10.5.0.4
 
+    consulclient01:   
+        build:
+            context: .
+            dockerfile: DockerfileClient
+        container_name: consulclient01
+        hostname: consulclient01
+        command: sh -c "nginx && tail -f /dev/null"
+        volumes: 
+            - ./clients/client01:/etc/consul.d
+        networks:
+            network:
+                ipv4_address: 10.5.0.5
+
+    consulclient02:   
+        build:
+            context: .
+            dockerfile: DockerfileClient
+        container_name: consulclient02
+        hostname: consulclient02
+        command: sh -c "nginx && tail -f /dev/null"
+        volumes: 
+            - ./clients/client02:/etc/consul.d
+        networks:
+            network:
+                ipv4_address: 10.5.0.6
+
 networks:
   network:
     driver: bridge

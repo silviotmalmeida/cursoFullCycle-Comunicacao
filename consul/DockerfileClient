@@ -1,0 +1,20 @@
+# definindo a imagem base
+FROM consul:1.10
+
+# criando as pastas necessárias para o consul
+RUN mkdir /etc/consul.d && mkdir /var/lib/consul
+
+# instalando o bind-tools
+RUN apk -U add bind-tools
+
+# instalando o nginx
+RUN apk -U add nginx
+
+# criando a pasta da aplicação
+RUN mkdir /usr/share/nginx/html
+
+# copiando o arquivo de configuração customizado
+COPY nginx/conf.d/default.conf /etc/nginx/conf.d/
+
+# copiando o arquivo index customizado
+COPY nginx/html/index.html /usr/share/nginx/html
