@@ -7,14 +7,17 @@ RUN mkdir /etc/consul.d && mkdir /var/lib/consul
 # instalando o bind-tools
 RUN apk -U add bind-tools
 
+# instalando o tcpdump
+RUN apk add tcpdump
+
 # instalando o nginx
-RUN apk -U add nginx
+RUN apk add nginx
 
 # criando a pasta da aplicação
 RUN mkdir /usr/share/nginx/html
 
 # copiando o arquivo de configuração customizado
-COPY nginx/conf.d/default.conf /etc/nginx/conf.d/
+COPY nginx/http.d/default.conf /etc/nginx/http.d/
 
 # copiando o arquivo index customizado
 COPY nginx/html/index.html /usr/share/nginx/html

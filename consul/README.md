@@ -8,6 +8,8 @@
 
 > Exemplo: consul agent -node=consulclient02 -bind=172.20.0.6 -data-dir=/var/lib/consul -config-dir=/etc/consul.d;
 
+-- para subir o consul a pertir do json de configuração utiliza-se: consul agent -config-dir=<path-da-pasta-do-arquivo-json>;
+
 -- para subir o consul com join automático utiliza-se o parâmetro adicional: -retry-join=<ip-do-consul-server>;
 
 -- para parear dois agentes utiliza-se: consul join <ip-do-agente-remoto>;
@@ -37,3 +39,7 @@
 -- para realizar consultas de tags de serviços via DNS, retornando somente os IP, utiliza-se: dig @localhost -p 8600 <nome-da-tag>.<nome-do-serviço>.service.consul +short;
 
 -- o registro dos serviços deve ser feito no services.json, bem como as regras de health-checks;
+
+-- para gerar uma chave de criptografia do consul utiliza-se: consul keygen;
+
+-- para acessar a interface gráfica web de administração deve-se habilitar/configurar esta opção no json e acessar via localhost:8500/ui;

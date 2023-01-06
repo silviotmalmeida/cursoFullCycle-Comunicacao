@@ -11,10 +11,8 @@ docker exec consulserver03 sh -c "consul agent -server -bootstrap-expect=3 -node
 
 echo "Subindo o consulclient01..."
 docker exec consulclient01 sh -c "consul agent -node=consulclient01 -bind=10.5.0.5 -data-dir=/var/lib/consul -config-dir=/etc/consul.d -retry-join=10.5.0.2" &
-docker exec consulclient01 sh -c "nginx -s reload" &
 
 echo "Subindo o consulclient02..."
 docker exec consulclient02 sh -c "consul agent -node=consulclient02 -bind=10.5.0.6 -data-dir=/var/lib/consul -config-dir=/etc/consul.d -retry-join=10.5.0.2" &
-docker exec consulclient02 sh -c "nginx -s reload" &
 
 echo "Concluído!"
